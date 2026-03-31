@@ -52,3 +52,19 @@ The PawPal+ system was extended with several advanced scheduling features.
 - Conflict detection identifies when two tasks are scheduled at the same time and displays a warning.
 
 These improvements make the scheduling system more realistic and useful for managing pet care tasks.
+
+## Testing PawPal+
+
+You can run the automated test suite using:
+
+python -m pytest
+
+The tests verify the core functionality of the system, including:
+
+- Sorting tasks by time to ensure correct chronological order
+- Recurring task logic to confirm new tasks are created after completion
+- Conflict detection to identify tasks scheduled at the same time
+
+Confidence Level: ⭐⭐⭐⭐⭐ (5/5)
+
+The system is reliable based on all tests passing and covering the main scheduling features.
