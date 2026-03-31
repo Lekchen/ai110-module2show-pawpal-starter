@@ -93,6 +93,19 @@ class Scheduler:
 
         return result
 
+    def detectConflicts(self, tasks):
+        """Detect tasks that occur at the same time."""
+        seen = {}
+        conflicts = []
+
+        for task in tasks:
+            if task.time in seen:
+                conflicts.append((seen[task.time], task))
+            else:
+                seen[task.time] = task
+
+        return conflicts
+
     def generatePlan(self, tasks, preferences):
         """Generate a schedule based on priority and available time."""
         sorted_tasks = self.sortByPriority(tasks)
