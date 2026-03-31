@@ -1,3 +1,14 @@
+## Features
+
+- Task management for pets (add, remove, view tasks)
+- Priority-based scheduling
+- Sorting tasks by time
+- Filtering tasks by priority or completion status
+- Conflict detection for tasks scheduled at the same time
+- Recurring tasks (daily and weekly)
+- Automatic schedule generation based on available time
+- Clear explanation of scheduling decisions
+
 # PawPal+ (Module 2 Project)
 
 You are building **PawPal+**, a Streamlit app that helps a pet owner plan care tasks for their pet.
@@ -68,3 +79,7 @@ The tests verify the core functionality of the system, including:
 Confidence Level: ⭐⭐⭐⭐⭐ (5/5)
 
 The system is reliable based on all tests passing and covering the main scheduling features.
+
+## Demo
+
+![PawPal+ Screenshot](screenshot.png)
