@@ -1,34 +1,45 @@
 from pawpal_system import Pet, PetTask, UserPreferences, Scheduler, Planner
 
-# Create a pet
+# Create pet
 pet = Pet("Buddy")
 
-# Create tasks
-task1 = PetTask("Walk", 30, 3, "Exercise")
-task2 = PetTask("Feed", 10, 5, "Food")
-task3 = PetTask("Play", 20, 2, "Fun")
+# Add tasks (OUT OF ORDER)
+t1 = PetTask("Walk", 30, 3, "Exercise", time="10:00")
+t2 = PetTask("Feed", 10, 5, "Food", time="08:00")
+t3 = PetTask("Play", 20, 2, "Fun", time="12:00")
 
-# Add tasks to pet
-pet.addTask(task1)
-pet.addTask(task2)
-pet.addTask(task3)
+pet.addTask(t1)
+pet.addTask(t2)
+pet.addTask(t3)
 
-# Create user preferences
+scheduler = Scheduler()
 preferences = UserPreferences(availableTime=40, preferredTime="Morning")
 
-# Create scheduler and planner
-scheduler = Scheduler()
-planner = Planner(pet, preferences, scheduler)
+print("Original Tasks:")
+for t in pet.getTasks():
+    print(t.getDetails())
 
-# Generate plan
+# ---------------- SORT BY TIME ----------------
+sorted_tasks = scheduler.sortByTime(pet.getTasks())
+
+print("\nSorted by Time:")
+for t in sorted_tasks:
+    print(t.getDetails())
+
+# ---------------- FILTER ----------------
+filtered_tasks = scheduler.filterTasks(pet.getTasks(), min_priority=3)
+
+print("\nFiltered Tasks (priority >= 3):")
+for t in filtered_tasks:
+    print(t.getDetails())
+
+# ---------------- GENERATE PLAN ----------------
+planner = Planner(pet, preferences, scheduler)
 plan = planner.createPlan()
 
-# Print schedule
-print("Today's Schedule:\n")
+print("\nGenerated Plan:")
+for t in plan:
+    print(t.getDetails())
 
-for task in plan:
-    print(task.getDetails())
-
-# Print explanation
 print("\nExplanation:")
 print(planner.explainPlan())
