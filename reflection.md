@@ -48,7 +48,11 @@ These changes helped make the design more organized, readable, and easier to ext
 
 - What constraints does your scheduler consider (for example: time, priority, preferences)?
 - How did you decide which constraints mattered most?
-The scheduler considers two main constraints: available time and task priority. Each task has a duration and a priority level, and the scheduler selects tasks in order of highest priority while ensuring the total duration does not exceed the available time.
+The current scheduling logic in main.py is simple and focuses on selecting tasks based on priority and available time. It sorts tasks by priority and adds them to the schedule until the time limit is reached.
+
+However, this approach is somewhat basic. It does not consider the order of tasks during the day, does not handle recurring tasks, and does not check for conflicts between tasks. It also does not filter tasks based on status or type.
+
+To improve the system, I would add features such as sorting tasks by time, supporting recurring tasks, filtering tasks by type or status, and implementing basic conflict detection. These improvements would make the scheduler more realistic and useful for pet owners.
 
 I decided that priority should matter most because some tasks, such as feeding or medication, are more important than others. Time is also critical because the user may not be able to complete all tasks in one day.
 **b. Tradeoffs**
