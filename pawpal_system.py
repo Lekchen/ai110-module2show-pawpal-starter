@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field
 from typing import List
+from datetime import datetime, timedelta
 
 
 @dataclass
@@ -10,10 +11,40 @@ class PetTask:
     type: str
     time: str = "09:00"
     completed: bool = False
+    frequency: str = "once"   # once, daily, weekly
+    date: datetime = field(default_factory=datetime.now)
 
     def getDetails(self):
         """Return task details as a formatted string."""
         return f"{self.time} - {self.name} ({self.type}) - {self.duration} mins, Priority {self.priority}"
+
+    def mark_complete(self):
+        """Mark task complete and create next recurring task."""
+        self.completed = True
+
+        if self.frequency == "daily":
+            return PetTask(
+                name=self.name,
+                duration=self.duration,
+                priority=self.priority,
+                type=self.type,
+                time=self.time,
+                frequency="daily",
+                date=self.date + timedelta(days=1)
+            )
+
+        elif self.frequency == "weekly":
+            return PetTask(
+                name=self.name,
+                duration=self.duration,
+                priority=self.priority,
+                type=self.type,
+                time=self.time,
+                frequency="weekly",
+                date=self.date + timedelta(days=7)
+            )
+
+        return None
 
 
 @dataclass
