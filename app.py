@@ -67,9 +67,10 @@ if st.button("Generate schedule"):
     scheduler = st.session_state.scheduler
     preferences = st.session_state.preferences
 
-
+    # Clear old tasks
     pet.tasks.clear()
 
+    # Convert UI tasks into PetTask objects
     for t in st.session_state.tasks:
         if t["priority"] == "high":
             p = 3
@@ -82,18 +83,41 @@ if st.button("Generate schedule"):
             name=t["title"],
             duration=t["duration_minutes"],
             priority=p,
-            type="General"
+            type="General",
+            time="09:00"  # you can improve this later with input
         )
         pet.addTask(task)
 
+    # ---------------- CONFLICT DETECTION ----------------
+    conflicts = scheduler.detectConflicts(pet.getTasks())
+
+    if conflicts:
+        st.warning("⚠️ Task conflicts detected!")
+        for a, b in conflicts:
+            st.write(f"- {a.name} and {b.name} are both scheduled at {a.time}")
+
+    # ---------------- SORT TASKS ----------------
+    sorted_tasks = scheduler.sortByTime(pet.getTasks())
+
+    st.subheader("Sorted Tasks")
+    st.table([{
+        "Task": t.name,
+        "Time": t.time,
+        "Priority": t.priority
+    } for t in sorted_tasks])
+
+    # ---------------- GENERATE PLAN ----------------
     planner = Planner(pet, preferences, scheduler)
     plan = planner.createPlan()
 
-
     if plan:
         st.success("Today's Schedule:")
-        for task in plan:
-            st.markdown(f"- {task.getDetails()}")
+        st.table([{
+            "Task": t.name,
+            "Time": t.time,
+            "Duration": t.duration,
+            "Priority": t.priority
+        } for t in plan])
 
         st.markdown("### Explanation")
         st.info(planner.explainPlan())
