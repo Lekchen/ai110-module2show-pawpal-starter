@@ -116,3 +116,15 @@ If I had another iteration, I would improve the scheduler by adding support for 
 
 - What is one important thing you learned about designing systems or working with AI on this project?
 One important thing I learned is how breaking a system into smaller components makes it easier to design and implement. I also learned how to effectively use AI as a tool while still making my own decisions about what is appropriate for the project.
+
+## 6. Testing Plan
+
+The core behaviors to test in the PawPal+ system include:
+
+1. Task addition and removal – verifying that tasks are correctly added to and removed from a pet’s task list.
+2. Scheduling logic – ensuring tasks are selected correctly based on priority and available time.
+3. Sorting by time – confirming that tasks are ordered correctly using their time attribute.
+4. Recurring tasks – checking that completing a daily or weekly task creates a new task with the correct future date.
+5. Conflict detection – verifying that the system detects when two tasks are scheduled at the same time and displays a warning.
+
+In addition to normal scenarios, I would also test edge cases such as a pet with no tasks and multiple tasks scheduled at the exact same time.
