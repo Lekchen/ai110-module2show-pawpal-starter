@@ -82,4 +82,5 @@ The system is reliable based on all tests passing and covering the main scheduli
 
 ## Demo
 
-![PawPal+ Screenshot](screenshot.png)
+![PawPal+ Screenshot 1](screenshot1.jpeg)
+![PawPal+ Screenshot 2](screenshot2.jpeg)
