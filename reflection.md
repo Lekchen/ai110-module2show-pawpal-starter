@@ -72,7 +72,15 @@ I chose this tradeoff because it reduces complexity and ensures the system remai
 
 - How did you use AI tools during this project (for example: design brainstorming, debugging, refactoring)?
 - What kinds of prompts or questions were most helpful?
-I used AI tools to help with designing the system, generating class skeletons, debugging errors, and refining my implementation. AI was especially helpful in converting UML designs into Python code and fixing issues with Git, pytest, and Streamlit.
+I used AI tools such as VS Code Copilot and ChatGPT to assist with designing, implementing, and debugging my scheduler system. Copilot was especially helpful for generating class structures, method suggestions, and completing repetitive code patterns. ChatGPT was useful for explaining concepts step-by-step, debugging errors, and helping integrate different parts of the system such as the UI and backend.
+
+The most helpful prompts were specific questions like “How do I implement sorting by time?” or “How can I detect task conflicts?” because they provided focused and practical solutions.
+
+**b. Judgment and verification**
+
+One example where I modified an AI suggestion was when adding complexity to the scheduler design. Some suggestions included adding extra classes or overly complex logic. I chose to simplify the implementation to keep the system beginner-friendly and aligned with the assignment requirements.
+
+I verified AI suggestions by testing the code using simple examples, running the program, and checking if the output matched expected behavior. I also made sure the design stayed consistent with my UML and project goals.
 
 The most helpful prompts were specific instructions such as asking for step-by-step guidance, requesting code corrections, and asking for explanations of errors.
 **b. Judgment and verification**
@@ -117,14 +125,8 @@ If I had another iteration, I would improve the scheduler by adding support for 
 - What is one important thing you learned about designing systems or working with AI on this project?
 One important thing I learned is how breaking a system into smaller components makes it easier to design and implement. I also learned how to effectively use AI as a tool while still making my own decisions about what is appropriate for the project.
 
-## 6. Testing Plan
+## 6. Reflection on AI Strategy
 
-The core behaviors to test in the PawPal+ system include:
+Working with AI tools taught me that I am responsible for making design decisions, while AI acts as a helper. I learned to guide AI with clear prompts and to critically evaluate its suggestions instead of blindly accepting them.
 
-1. Task addition and removal – verifying that tasks are correctly added to and removed from a pet’s task list.
-2. Scheduling logic – ensuring tasks are selected correctly based on priority and available time.
-3. Sorting by time – confirming that tasks are ordered correctly using their time attribute.
-4. Recurring tasks – checking that completing a daily or weekly task creates a new task with the correct future date.
-5. Conflict detection – verifying that the system detects when two tasks are scheduled at the same time and displays a warning.
-
-In addition to normal scenarios, I would also test edge cases such as a pet with no tasks and multiple tasks scheduled at the exact same time.
+Being the "lead architect" means balancing simplicity, functionality, and clarity. AI can generate solutions quickly, but it is important to choose approaches that are understandable and maintainable. This project helped me understand how to effectively collaborate with AI while staying in control of the system design.
