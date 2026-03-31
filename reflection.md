@@ -59,9 +59,11 @@ I decided that priority should matter most because some tasks, such as feeding o
 
 - Describe one tradeoff your scheduler makes.
 - Why is that tradeoff reasonable for this scenario?
-One tradeoff the scheduler makes is prioritizing high-priority tasks over fitting more tasks into the schedule. This means some lower-priority tasks may be skipped even if there is still time available.
+One tradeoff my scheduler makes is that it only checks for exact time conflicts rather than overlapping durations. For example, if one task starts at 10:00 and another starts at 10:15, the system does not detect this as a conflict even if the first task has not finished.
 
-This tradeoff is reasonable because, in real life, important tasks like feeding or health-related activities should always come first, even if it means leaving out less important tasks.
+This approach keeps the implementation simple and easy to understand, but it is less accurate for real-world scheduling where tasks can overlap based on duration.
+
+I chose this tradeoff because it reduces complexity and ensures the system remains beginner-friendly, while still demonstrating the concept of conflict detection.
 ---
 
 ## 3. AI Collaboration
